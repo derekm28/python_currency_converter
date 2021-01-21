@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Currency Converter</title>
+    <link rel="stylesheet" href="https://unpkg.com/bootstrap/dist/css/bootstrap.css">
+</head>
+
+<body>
+
+    <h1>Currency Converter</h1>
+
+    <form action="/display_currency" method="POST">
+        <div class='form-group row'>
+            <label for="converting_from" class='col-sm-2 col-form-label'>Converting from:</label>
+            <div class='col-sm-10'>
+                <input type='text' class='form-control' id='converting_from' name="converting_from"
+                    placeholder="Enter Beginning Currency Type">
+                </p>
+            </div>
+        </div>
+
+
+        <div class='form-group row'>
+            <label for="converting_to" class='col-sm-2 col-form-label'>Converting to:</label>
+            <div class='col-sm-10'>
+                <input type='text' class='form-control' id='converting_to' name="converting_to"
+                    placeholder="Enter Ending Currency Type">
+                </p>
+            </div>
+        </div>
+
+        <div class='form-group row'>
+            <label for="amount" class='col-sm-2 col-form-label'>Amount:</label>
+            <div class='col-sm-10'>
+                <input type='text' class='form-control' id='amount' name="amount" placeholder="Enter Amount">
+                </p>
+            </div>
+        </div>
+
+        <div class='form-group row'>
+            <div class='ml-auto mr-3'>
+                <button type='submit' class='btn btn-success'>Convert</button>
+            </div>
+        </div>  
+
+    </form>
+
+    <div >
+        <p class='msg'>
+            <!-- will display converted amount here-->
+            Conversion Amount is:
+            {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+            {% for category, message in messages %}
+            <p class="{{category}}">
+                {{message}}
+            </p>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
+
+            {% block content %} {% endblock %}
+        </p>
+        <div class='col-sm-10'></div>
+    </div>
+
+
+</body>
+
+</html>
